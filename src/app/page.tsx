@@ -1,113 +1,286 @@
+import { Icons, Phone, Reviews, Wrapper } from "@/components";
+import { Button } from "@/components/ui/Button";
+import { ArrowRight, BadgeCheck, Check, CircleCheck, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import React from 'react'
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+const HomePage = () => {
+    return (
+        <div className="bg-neutral-50">
+            <section className="">
+                <Wrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
+                    <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
+                        <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
+                            <div className="absolute w-28 left-0 -top-20 hidden lg:block">
+                                <Image
+                                    src="/snake-1.png"
+                                    alt="snake"
+                                    width={1024}
+                                    height={1024}
+                                    className="w-full object-cover"
+                                />
+                            </div>
+                            <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold text-5xl !leading-tight md:text-6xl lg:text-7xl">
+                                Your Image on a <span className="bg-primary text-background rounded-md px-2">Custom</span> Phone Case
+                            </h1>
+                            <p className="text-lg mt-8 lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap">
+                                Capture your favorite memories with your own, <span className="font-semibold">one-of-one</span> phone case.
+                            </p>
+
+                            <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
+                                <div className="space-y-2">
+                                    <li className="flex gap-1.5 items-center text-left">
+                                        <Check className="text-primary w-5 h-5 shrink-0" />
+                                        High-quality, durable material
+                                    </li>
+                                    <li className="flex gap-1.5 items-center text-left">
+                                        <Check className="text-primary w-5 h-5 shrink-0" />
+                                        5 year print guarantee
+                                    </li>
+                                    <li className="flex gap-1.5 items-center text-left">
+                                        <Check className="text-primary w-5 h-5 shrink-0" />
+                                        Modern iPhone models supported
+                                    </li>
+                                </div>
+                            </ul>
+
+                            <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                                <div className="flex -space-x-4">
+                                    <Image
+                                        src="/users/user-1.png"
+                                        alt="user"
+                                        width={1024}
+                                        height={1024}
+                                        className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
+                                    />
+                                    <Image
+                                        src="/users/user-2.png"
+                                        alt="user"
+                                        width={1024}
+                                        height={1024}
+                                        className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
+                                    />
+                                    <Image
+                                        src="/users/user-3.png"
+                                        alt="user"
+                                        width={1024}
+                                        height={1024}
+                                        className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
+                                    />
+                                    <Image
+                                        src="/users/user-4.jpg"
+                                        alt="user"
+                                        width={1024}
+                                        height={1024}
+                                        className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
+                                    />
+                                    <Image
+                                        src="/users/user-5.jpg"
+                                        alt="user"
+                                        width={1024}
+                                        height={1024}
+                                        className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col justify-between items-center sm:items-start">
+                                    <div className="flex gap-0.5">
+                                        <Star className="w-4 h-4 text-primary fill-primary" />
+                                        <Star className="w-4 h-4 text-primary fill-primary" />
+                                        <Star className="w-4 h-4 text-primary fill-primary" />
+                                        <Star className="w-4 h-4 text-primary fill-primary" />
+                                        <Star className="w-4 h-4 text-primary fill-primary" />
+                                    </div>
+
+                                    <p className="text-sm"><span className="font-semibold">1.268</span> happy customers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-span-full lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20 h-fit">
+                        <div className="relative md:max-w-xl">
+                            <Image
+                                src="/your-image.png"
+                                alt="user"
+                                width={1024}
+                                height={1024}
+                                className="w-40 lg:w-52 left-56 -top-20 absolute select-none hidden sm:block lg:hidden xl:block"
+                            />
+                            <Image
+                                src="/line.png"
+                                alt="user"
+                                width={1024}
+                                height={1024}
+                                className="absolute w-20 -left-6 -bottom-6 select-none"
+                            />
+                            <Phone img="/testimonials/1.jpg" className="w-64" />
+                        </div>
+                    </div>
+                </Wrapper>
+            </section>
+
+            <section className="bg-neutral-100 py-24">
+                <Wrapper className="flex flex-col items-center gap-16 sm:gap-32">
+                    <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6">
+                        <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl sm:text-6xl">
+                            What our{" "}
+                            <span className="relative px-2">
+                                customers <Icons.underline className="hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-primary" />
+                            </span>{" "}
+                            say
+                        </h2>
+                        <Image
+                            src="/snake-2.png"
+                            alt="snake"
+                            width={1024}
+                            height={1024}
+                            className="w-24 order-[0] lg:order-2"
+                        />
+                    </div>
+
+                    <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16">
+                        <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
+                            <div className="flex gap-0.5 mb-2">
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                            </div>
+                            <div className="text-lg leading-8">
+                                <p className="">
+                                    "The case feels durable and I love the design. The print quality is amazing and the case fits my phone perfectly. I would definitely recommend this to anyone looking for a custom phone case."
+                                </p>
+                            </div>
+                            <div className="flex gap-4 mt-2">
+                                <Image
+                                    src="/users/user-1.png"
+                                    alt="user"
+                                    width={1024}
+                                    height={1024}
+                                    className="w-12 h-12 rounded-full object-cover"
+                                />
+                                <div className="flex flex-col">
+                                    <p className="font-semibold">Shreyas</p>
+                                    <div className="flex gap-1.5 items-center text-muted-foreground">
+                                        <BadgeCheck className="w-4 h-4 text-primary" />
+                                        <p className="text-sm">Verified Purchase</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
+                            <div className="flex gap-0.5 mb-2">
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                                <Star className="w-4 h-4 text-primary fill-primary" />
+                            </div>
+                            <div className="text-lg leading-8">
+                                <p className="">
+                                    "I love the case! The print quality is amazing and the case feels very durable. The case fits my phone perfectly and I love the design. I would definitely recommend this custom phone case."
+                                </p>
+                            </div>
+                            <div className="flex gap-4 mt-2">
+                                <Image
+                                    src="/users/user-2.png"
+                                    alt="user"
+                                    width={1024}
+                                    height={1024}
+                                    className="w-12 h-12 rounded-full object-cover"
+                                />
+                                <div className="flex flex-col">
+                                    <p className="font-semibold">Varun</p>
+                                    <div className="flex gap-1.5 items-center text-muted-foreground">
+                                        <BadgeCheck className="w-4 h-4 text-primary" />
+                                        <p className="text-sm">Verified Purchase</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Wrapper>
+
+                <div className="py-16">
+                    <Reviews />
+                </div>
+            </section>
+
+            <section className="">
+                <Wrapper className="py-24">
+                    <div className="mb-12 px-6 lg:px-8">
+                        <div className="mx-auto max-w-2xl sm:text-center">
+                            <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl sm:text-6xl">
+                                Upload your photo and get{" "}
+                                <span className="relative px-2 bg-primary rounded-md text-background">
+                                    your own case
+                                </span>{" "}
+                                now
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div className="mx-auto max-w-6xl px-6 lg:px-8">
+                        <div className="relative flex flex-col items-center md:grid grid-cols-2 gap-40">
+                            <div className="absolute top-[25rem] md:top-1/2 -translate-y-1/2 z-10 left-1/2 -translate-x-1/2 rotate-90 md:rotate-0 lg:pl-12">
+                                <Image
+                                    src="/arrow.png"
+                                    alt="arrow"
+                                    width={1024}
+                                    height={1024}
+                                    className="w-32 h-auto"
+                                />
+                            </div>
+
+                            <div className="relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-muted/5 lg:rounded-2xl">
+                                <Image
+                                    src="/horse.jpg"
+                                    alt="horse"
+                                    width={1024}
+                                    height={1024}
+                                    className="rounded-md object-cover bg-background shadow-2xl ring-1 ring-muted/10 h-full w-full"
+                                />
+                            </div>
+
+                            <div className="col-span-1 w-full mx-auto max-w-xs">
+                                <Phone img="/horse_phone.jpg" className="w-60" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul className="mx-auto mt-12 max-w-fit sm:text-lg space-y-2 flex flex-col items-start justify-center">
+                        <li className="w-fit flex items-center">
+                            <CircleCheck className="w-5 h-5 text-primary inline mr-1.5" />
+                            High-quality silicone material
+                        </li>
+                        <li className="w-fit flex items-center">
+                            <CircleCheck className="w-5 h-5 text-primary inline mr-1.5" />
+                            Scratch and fingerprint resistant coating
+                        </li>
+                        <li className="w-fit flex items-center">
+                            <CircleCheck className="w-5 h-5 text-primary inline mr-1.5" />
+                            Wireless charging compatible
+                        </li>
+                        <li className="w-fit flex items-center">
+                            <CircleCheck className="w-5 h-5 text-primary inline mr-1.5" />
+                            5 year print warranty
+                        </li>
+                    </ul>
+                    <div className="flex justify-center pt-8">
+                        <Button size="lg">
+                            <Link href="/configure/upload">
+                                Create your case now
+                                <ArrowRight className="w-4 h-4 ml-1.5" />
+                            </Link>
+                        </Button>
+                    </div>
+                </Wrapper>
+            </section>
         </div>
-      </div>
+    )
+};
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
-}
+export default HomePage
