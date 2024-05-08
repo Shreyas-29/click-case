@@ -44,7 +44,8 @@ export async function POST(request: Request) {
                     shippingAddress: {
                         create: {
                             name: session.customer_details!.name!,
-                            // city: billingAddress!.city!,
+                            // @ts-ignore
+                            city: billingAddress!.city!,
                             country: shippingAddress!.country!,
                             postalCode: shippingAddress!.postal_code!,
                             street: shippingAddress!.line1!,
@@ -54,7 +55,8 @@ export async function POST(request: Request) {
                     billingAddress: {
                         create: {
                             name: session.customer_details!.name!,
-                            // city: billingAddress!.city!,
+                            // @ts-ignore
+                            city: billingAddress!.city!,
                             country: shippingAddress!.country!,
                             postalCode: shippingAddress!.postal_code!,
                             street: shippingAddress!.line1!,

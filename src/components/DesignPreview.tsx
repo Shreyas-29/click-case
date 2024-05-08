@@ -31,7 +31,7 @@ const DesignPreview = ({ configuration }: Props) => {
     const [showConfetti, setShowConfetti] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    useEffect(() => setShowConfetti(true));
+    useEffect(() => setShowConfetti(true), []);
 
     const tw = COLORS.find((supportedColor) => supportedColor.value === color)?.tw;
 
