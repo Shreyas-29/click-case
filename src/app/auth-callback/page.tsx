@@ -36,7 +36,7 @@ const AuthCallBackPage = () => {
     };
 
     return (
-        <div className="w-full mt-24 flex justify-center">
+        <div className="w-full mt-48 flex justify-center">
             <div className="flex flex-col items-center gap-2">
                 <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
                 <h3 className="text-xl font-semibold">

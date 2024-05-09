@@ -2,6 +2,11 @@ import { DesignConfig } from "@/components";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import React from 'react'
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Customize Design",
+};
 
 interface Props {
     searchParams: {

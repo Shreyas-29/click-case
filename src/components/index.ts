@@ -8,6 +8,13 @@ import DesignConfig from "./DesignConfig";
 import DesignPreview from "./DesignPreview";
 import HandleComponent from "./HandleComponent";
 import AuthModal from "./AuthModal";
+import ThankYou from "./ThankYou";
+import PhonePreview from "./PhonePreview";
+import StatusDropdown from "./StatusDropdown";
+import DotsLoader from "./DotsLoader";
+import Loader from "./Loader";
+
+import OrderEmail from "./emails/OrderEmail";
 
 import Wrapper from "./utils/Wrapper";
 import Providers from "./utils/Providers";
@@ -25,4 +32,10 @@ export {
     HandleComponent,
     Providers,
     AuthModal,
+    ThankYou,
+    PhonePreview,
+    StatusDropdown,
+    OrderEmail,
+    DotsLoader,
+    Loader,
 }

@@ -7,7 +7,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
     dark?: boolean;
 }
 
-const Phone: React.FC<Props> = ({img, className, dark = false, ...props}) => {
+const Phone: React.FC<Props> = ({ img, className, dark = false, ...props }) => {
     return (
         <div className={cn(
             "relative pointer-events-none z-50 overflow-hidden",
@@ -16,16 +16,16 @@ const Phone: React.FC<Props> = ({img, className, dark = false, ...props}) => {
             <Image
                 src={dark ? "/phone-template-dark-edges.png" : "/phone-template-white-edges.png"}
                 alt="phone"
-                width={1024}
-                height={1024}
+                width={2024}
+                height={2024}
                 className="pointer-events-none z-50 select-none"
             />
             <div className="absolute -z-10 inset-0">
                 <Image
                     src={img}
                     alt="phone"
-                    width={1024}
-                    height={1024}
+                    width={2024}
+                    height={2024}
                     className="object-cover min-w-full min-h-full"
                 />
             </div>

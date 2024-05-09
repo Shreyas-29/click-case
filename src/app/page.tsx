@@ -1,5 +1,5 @@
 import { Icons, Phone, Reviews, Wrapper } from "@/components";
-import { Button } from "@/components/ui/Button";
+import { Button, buttonVariants } from "@/components/ui/Button";
 import { ArrowRight, BadgeCheck, Check, CircleCheck, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -270,12 +270,10 @@ const HomePage = () => {
                         </li>
                     </ul>
                     <div className="flex justify-center pt-8">
-                        <Button size="lg">
-                            <Link href="/configure/upload">
-                                Create your case now
-                                <ArrowRight className="w-4 h-4 ml-1.5" />
-                            </Link>
-                        </Button>
+                        <Link href="/configure/upload" className={buttonVariants({ size: "lg" })}>
+                            Create your case now
+                            <ArrowRight className="w-4 h-4 ml-1.5" />
+                        </Link>
                     </div>
                 </Wrapper>
             </section>

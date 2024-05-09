@@ -19,6 +19,7 @@ import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { saveConfig, SaveConfigProps } from "@/actions";
 import { useRouter } from "next/navigation";
+import DotsLoader from "./DotsLoader";
 
 interface Props {
     configId: string;
@@ -195,7 +196,7 @@ const DesignConfig = ({
                     }}
                     className="absolute z-20 border-[3px] border-primary"
                 >
-                    <div className="relative w-full h-full">
+                    <div className="relative w-full h-full cursor-grab">
                         <NextImage
                             src={url}
                             alt="your-image"
@@ -352,7 +353,6 @@ const DesignConfig = ({
                                 {formatPrice((BASE_PRICE + options.finish.price + options.material.price) / 100)}
                             </p>
                             <Button
-                                size="sm"
                                 disabled={isPending}
                                 onClick={() => _saveConfig({
                                     configId,
@@ -364,7 +364,7 @@ const DesignConfig = ({
                                 className="w-full flex-1"
                             >
                                 {isPending ? (
-                                    <Loader2 className="w-4 h-4 animate-spin" />
+                                    <DotsLoader />
                                 ) : (
                                     <>
                                         Continue

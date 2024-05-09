@@ -18,7 +18,7 @@ const createCheckoutSession = async ({ configId }: { configId: string }) => {
             throw new Error("No such configuration found");
         }
 
-        console.log("I am started!");
+        // console.log("I am started!");
 
         const { getUser } = getKindeServerSession();
 
@@ -44,7 +44,7 @@ const createCheckoutSession = async ({ configId }: { configId: string }) => {
             },
         });
 
-        console.log("existing-order", existingOrder);
+        // console.log("existing-order", existingOrder);
 
         if (existingOrder) {
             order = existingOrder;
@@ -58,17 +58,17 @@ const createCheckoutSession = async ({ configId }: { configId: string }) => {
             });
         }
 
-        console.log("new-order", order);
+        // console.log("new-order", order);
 
         const product = await stripe.products.create({
             name: "Custom iPhone Case",
             images: [configuration.url],
             default_price_data: {
-                currency: "INR",
+                currency: "USD",
                 unit_amount: price,
             },
         });
-        console.log("product", product);
+        // console.log("product", product);
 
         const session = await stripe.checkout.sessions.create({
             success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}`,
@@ -76,7 +76,7 @@ const createCheckoutSession = async ({ configId }: { configId: string }) => {
             payment_method_types: ["card"],
             mode: "payment",
             shipping_address_collection: {
-                allowed_countries: ["IN"],
+                allowed_countries: ["IN", "US"],
             },
             metadata: {
                 userId: user.id,
@@ -89,13 +89,13 @@ const createCheckoutSession = async ({ configId }: { configId: string }) => {
         });
 
         // // check if the currency is INR
-        if (session.currency === "INR") {
-            session.shipping_address_collection = {
-                allowed_countries: ["IN"],
-            }
-        } else {
-            session.billing_address_collection = "auto";
-        }
+        // if (session.currency === "INR") {
+        //     session.shipping_address_collection = {
+        //         allowed_countries: ["IN"],
+        //     }
+        // } else {
+        //     session.billing_address_collection = "auto";
+        // }
 
         return { url: session.url };
     } catch (error: any) {

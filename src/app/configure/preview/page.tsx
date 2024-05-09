@@ -2,6 +2,11 @@ import { DesignPreview } from "@/components";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import React from 'react'
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Summary",
+};
 
 interface Props {
     searchParams: {

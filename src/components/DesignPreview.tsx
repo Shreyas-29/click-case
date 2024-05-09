@@ -15,6 +15,7 @@ import { createCheckoutSession } from "@/actions";
 import { toast } from "sonner";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import AuthModal from "./AuthModal";
+import DotsLoader from "./DotsLoader";
 
 interface Props {
     configuration: Configuration;
@@ -26,10 +27,13 @@ const DesignPreview = ({ configuration }: Props) => {
 
     const { user } = useKindeBrowserClient();
 
+    console.log("user", user);
+
     const { id, color, model, finish, material } = configuration;
 
     const [showConfetti, setShowConfetti] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isPending, setIsPending] = useState<boolean>(false);
 
     useEffect(() => setShowConfetti(true), []);
 
@@ -42,36 +46,34 @@ const DesignPreview = ({ configuration }: Props) => {
     if (material === "polycarbonate") totalPrice += PRODUCT_PRICES.material.polycarbonate;
     if (finish === "textured") totalPrice += PRODUCT_PRICES.finish.textured;
 
-    const { mutate: createPaymentSession, isPending } = useMutation({
-        mutationKey: ["get-checkout-session"],
-        mutationFn: createCheckoutSession,
-        onError: () => {
+    const handleCheckout = async () => {
+        setIsPending(true);
+        try {
+            if (user) {
+                const res = await createCheckoutSession({ configId: id });
+                if (res.error) {
+                    toast.error("Something went wrong", {
+                        description: "There was an error processing your order. Please try again later."
+                    });
+                } else if (res.url) {
+                    const promise = () => new Promise((resolve) => setTimeout(() => resolve({ name: 'Snakecase' }), 2000));
+                    router.push(res.url);
+                    toast.promise(promise(), {
+                        loading: "Redirecting you to the checkout page...",
+                        success: "You're being redirected to the checkout page...",
+                        error: "There was an error processing your order. Please try again later."
+                    });
+                }
+            } else {
+                localStorage.setItem("configurationId", id);
+                setIsOpen(true);
+            }
+        } catch (error) {
             toast.error("Something went wrong", {
                 description: "There was an error processing your order. Please try again later."
             });
-        },
-        onSuccess: ({ url }) => {
-            if (url) router.push(url);
-            else throw new Error("No checkout URL found");
-        },
-    });
-    console.log("user", user);
-
-    const handleCheckout = async () => {
-        console.log("clicked")
-        if (user) {
-            const res = await createCheckoutSession({ configId: id });
-            if (res.error) {
-                toast.error("Something went wrong", {
-                    description: "There was an error processing your order. Please try again later."
-                });
-            } else if (res.url) {
-                router.push(res.url);
-                toast.success("You are being redirected to the checkout page...");
-            }
-        } else {
-            localStorage.setItem("configurationId", id);
-            setIsOpen(true);
+        } finally {
+            setIsPending(false);
         }
     };
 
@@ -89,15 +91,15 @@ const DesignPreview = ({ configuration }: Props) => {
 
             <AuthModal isOpen={isOpen} setIsOpen={setIsOpen} />
 
-            <div className="mt-20 grid grid-cols-1 sm:grid-cols-12 text-sm sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
-                <div className="sm:col-span-4 md:col-span-3 md:row-span-2 md:row-end-2">
+            <div className="mt-20 flex flex-col items-center md:grid sm:grid-cols-12 text-sm sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
+                <div className="md:col-span-4 lg:col-span-3 md:row-span-2 md:row-end-2">
                     <Phone
                         img={configuration.croppedImageUrl!}
-                        className={cn(`bg-${tw}`)}
+                        className={cn(`bg-${tw}, "max-w-[150px] md:max-w-full`)}
                     />
                 </div>
 
-                <div className="mt-6 sm:col-span-9 md:mt-0 md:row-end-1">
+                <div className="mt-6 sm:col-span-9 md:row-end-1">
                     <h3 className="text-3xl font-bold tracking-tight">
                         Your {modelLabel} Case
                     </h3>
@@ -198,14 +200,18 @@ const DesignPreview = ({ configuration }: Props) => {
 
                         <div className="mt-8 flex justify-end pb-12">
                             <Button
-                                isLoading={isPending}
                                 disabled={isPending}
-                                loadingText="Processing"
                                 onClick={() => handleCheckout()}
-                                className="px-4 sm:px-6 lg:px-8"
+                                className="px-4 sm:px-6 lg:px-8 w-44"
                             >
-                                Continue to Checkout
-                                <ArrowRight className="w-4 h-4 ml-2" />
+                                {isPending ? (
+                                    <DotsLoader />
+                                ) : (
+                                    <>
+                                        Continue to Checkout
+                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                    </>
+                                )}
                             </Button>
                         </div>
                     </div>
