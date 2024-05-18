@@ -37,14 +37,56 @@ const DesignPreview = ({ configuration }: Props) => {
 
     useEffect(() => setShowConfetti(true), []);
 
-    const tw = COLORS.find((supportedColor) => supportedColor.value === color)?.tw;
+    const tw = COLORS.find((supportedColor) => supportedColor.value === color)?.color;
 
-    const { label: modelLabel } = MODELS.options.find(({ value }) => value === model)!;
+    const getModelLabel = (modelValue: string): string => {
+        const iPhoneModel = MODELS.iPhone.find(({ value }) => value === modelValue);
+        if (iPhoneModel) {
+            return iPhoneModel.label;
+        }
+
+        const samsungModel = MODELS.samsung.find(({ value }) => value === modelValue);
+        if (samsungModel) {
+            return samsungModel.label;
+        }
+
+        return '';
+    };
+
+    // const { label: modelLabel } = MODELS.options.find(({ value }) => value === model)!;
+    const modelLabel = getModelLabel(model!)!;
 
     let totalPrice = BASE_PRICE;
 
-    if (material === "polycarbonate") totalPrice += PRODUCT_PRICES.material.polycarbonate;
-    if (finish === "textured") totalPrice += PRODUCT_PRICES.finish.textured;
+    const SHIPPING_PRICE = 0;
+
+    if (finish === "textured") {
+        totalPrice += PRODUCT_PRICES.finish.textured;
+    } else if (finish === "brushed") {
+        totalPrice += PRODUCT_PRICES.finish.brushed;
+    } else if (finish === "frosted") {
+        totalPrice += PRODUCT_PRICES.finish.frosted;
+    } else if (finish === "glossy") {
+        totalPrice += PRODUCT_PRICES.finish.glossy;
+    } else if (finish === "matte") {
+        totalPrice += PRODUCT_PRICES.finish.matte;
+    } else if (finish === "smooth") {
+        totalPrice += PRODUCT_PRICES.finish.smooth;
+    } else if (finish === "transparent") {
+        totalPrice += PRODUCT_PRICES.finish.transparent;
+    }
+
+    if (material === "polycarbonate") {
+        totalPrice += PRODUCT_PRICES.material.polycarbonate;
+    } else if (material === "carbon_fiber") {
+        totalPrice += PRODUCT_PRICES.material.carbon_fiber;
+    } else if (material === "leather") {
+        totalPrice += PRODUCT_PRICES.material.leather;
+    } else if (material === "metal") {
+        totalPrice += PRODUCT_PRICES.material.metal;
+    } else if (material === "sillicone") {
+        totalPrice += PRODUCT_PRICES.material.polycarbonate;
+    }
 
     const handleCheckout = async () => {
         setIsPending(true);
@@ -56,7 +98,7 @@ const DesignPreview = ({ configuration }: Props) => {
                         description: "There was an error processing your order. Please try again later."
                     });
                 } else if (res.url) {
-                    const promise = () => new Promise((resolve) => setTimeout(() => resolve({ name: 'Snakecase' }), 2000));
+                    const promise = () => new Promise((resolve) => setTimeout(() => resolve({ name: 'Clickcase' }), 2000));
                     router.push(res.url);
                     toast.promise(promise(), {
                         loading: "Redirecting you to the checkout page...",
@@ -95,7 +137,7 @@ const DesignPreview = ({ configuration }: Props) => {
                 <div className="md:col-span-4 lg:col-span-3 md:row-span-2 md:row-end-2">
                     <Phone
                         img={configuration.croppedImageUrl!}
-                        className={cn(`bg-${tw}, "max-w-[150px] md:max-w-full`)}
+                        className={cn(`bg-${tw} max-w-[150px] md:max-w-full`)}
                     />
                 </div>
 
@@ -152,7 +194,7 @@ const DesignPreview = ({ configuration }: Props) => {
                     </div>
 
                     <div className="mt-8">
-                        <div className="bg-neutral-50 p-6 sm:rounded-lg sm:p-8">
+                        <div className="bg-slate-50 p-6 sm:rounded-lg sm:p-8">
                             <div className="flow-root text-sm">
                                 <div className="flex items-center justify-between py-1 mt-2">
                                     <p className="text-muted-foreground">
@@ -165,7 +207,7 @@ const DesignPreview = ({ configuration }: Props) => {
 
                                 {finish === "textured" ? (
                                     <div className="flex items-center justify-between py-1 mt-2">
-                                        <p className="text-muted-foreground">
+                                        <p className="text-muted-foreground capitalize">
                                             Textured finish
                                         </p>
                                         <p className="font-medium">
@@ -174,9 +216,86 @@ const DesignPreview = ({ configuration }: Props) => {
                                     </div>
                                 ) : null}
 
+                                {finish === "brushed" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            Brushed finish
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.finish.brushed / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                {finish === "frosted" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            frosted finish
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.finish.frosted / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                {finish === "glossy" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            glossy finish
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.finish.glossy / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                {finish === "matte" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            matte finish
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.finish.matte / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                {finish === "smooth" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            smooth finish
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.finish.smooth / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                {finish === "textured" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            textured finish
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.finish.textured / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                {finish === "transparent" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            transparent finish
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.finish.transparent / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
                                 {material === "polycarbonate" ? (
                                     <div className="flex items-center justify-between py-1 mt-2">
-                                        <p className="text-muted-foreground">
+                                        <p className="text-muted-foreground capitalize">
                                             Polycarbonate material
                                         </p>
                                         <p className="font-medium">
@@ -184,6 +303,48 @@ const DesignPreview = ({ configuration }: Props) => {
                                         </p>
                                     </div>
                                 ) : null}
+
+                                {material === "metal" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            metal material
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.material.metal / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                {material === "leather" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            leather material
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.material.leather / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                {material === "carbon_fiber" ? (
+                                    <div className="flex items-center justify-between py-1 mt-2">
+                                        <p className="text-muted-foreground capitalize">
+                                            carbon fiber material
+                                        </p>
+                                        <p className="font-medium">
+                                            {formatPrice(PRODUCT_PRICES.material.carbon_fiber / 100)}
+                                        </p>
+                                    </div>
+                                ) : null}
+
+                                <div className="flex items-center justify-between py-1 mt-2">
+                                    <p className="text-muted-foreground capitalize">
+                                        Shipping
+                                    </p>
+                                    <p className="font-medium">
+                                        {formatPrice(SHIPPING_PRICE)}
+                                    </p>
+                                </div>
 
                                 <div className="my-2 h-px w-full bg-border"></div>
 

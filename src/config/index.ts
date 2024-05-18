@@ -3,11 +3,19 @@ import { Metadata } from "next";
 export const PRODUCT_PRICES = {
     material: {
         sillicone: 0,
-        polycarbonate: 6_00,
+        metal: 100,
+        leather: 100,
+        carbon_fiber: 150,
+        polycarbonate: 50,
     },
     finish: {
         smooth: 0,
-        textured: 4_00,
+        textured: 50,
+        matte: 100,
+        glossy: 50,
+        transparent: 75,
+        frosted: 100,
+        brushed: 100,
     },
 } as const;
 
@@ -15,10 +23,10 @@ export const BASE_PRICE = 12_00;
 
 export const SITE_CONFIG: Metadata = {
     title: {
-        default: "SnakeCase - make your own phone case",
-        template: `%s | SnakeCase`,
+        default: "ClickCase | Your Custom Phone Case Maker",
+        template: `%s | ClickCase`,
     },
-    description: "Snakecase is a custom phone case maker that allows you to create your own phone case with your own design.",
+    description: "ClickCase is a custom phone case maker that allows you to create your own phone case with your own design.",
     icons: {
         icon: [
             {
@@ -28,8 +36,8 @@ export const SITE_CONFIG: Metadata = {
         ],
     },
     openGraph: {
-        title: "SnakeCase - make your own phone case",
-        description: "Snakecase is a custom phone case maker that allows you to create your own phone case with your own design.",
+        title: "ClickCase | Your Custom Phone Case Maker",
+        description: "ClickCase is a custom phone case maker that allows you to create your own phone case with your own design.",
         images: [
             {
                 url: "/og-image.png",
@@ -39,13 +47,13 @@ export const SITE_CONFIG: Metadata = {
     twitter: {
         card: "summary_large_image",
         creator: "@shreyassihasane",
-        title: "SnakeCase - make your own phone case",
-        description: "Snakecase is a custom phone case maker that allows you to create your own phone case with your own design.",
+        title: "ClickCase - make your own phone case",
+        description: "ClickCase is a custom phone case maker that allows you to create your own phone case with your own design.",
         images: [
             {
                 url: "/og-image.png",
             },
         ],
     },
-    metadataBase: new URL("https://snakecase.vercel.app"),
+    metadataBase: new URL("https://clickcase.vercel.app"),
 };

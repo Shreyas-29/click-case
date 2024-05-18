@@ -9,18 +9,18 @@ export const PHONES = [
 
 export const STEPS = [
     {
-        name: "Step 1: Add image",
-        description: "Choose an image for your case",
+        name: "Step 1: Upload Image",
+        description: "Choose an image",
         url: "/upload",
     },
     {
-        name: "Step 2: Customize design",
-        description: "Make the case yours",
+        name: "Step 2: Customize Design",
+        description: "Personalize your case",
         url: "/design",
     },
     {
-        name: "Step 3: Summary",
-        description: "Review your final design",
+        name: "Step 3: Review & Confirm",
+        description: "Review final design",
         url: "/preview",
     },
 ];

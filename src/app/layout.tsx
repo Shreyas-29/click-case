@@ -21,12 +21,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={cn(
-                "min-h-screen bg-neutral-50 text-neutral-900 antialiased",
+                "min-h-screen bg-slate-50 text-slate-900 antialiased",
                 font.className
             )}>
                 <Navbar />
                 <Toaster richColors theme="light" />
-                <main className="flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)] grainy-light">
+                <main className="flex flex-col min-h-[calc(100vh-3.5rem-1px)]">
                     <div className="flex-1 flex flex-col h-full">
                         <Providers>
                             {children}

@@ -70,6 +70,14 @@ const DashboardPage = async () => {
     const WEEKLY_GOAL = 500;
     const MONTHLY_GOAL = 2000;
 
+    if (!orders) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <p className="text-2xl font-semibold text-muted-foreground">No orders found</p>
+            </div>
+        )
+    }
+
     return (
         <div className="flex min-h-screen w-full bg-muted/40">
             <div className="max-w-7xl w-full mx-auto flex flex-col sm:gap-4 sm:py-4">

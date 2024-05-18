@@ -50,8 +50,8 @@ const UploadPage = () => {
 
     return (
         <div className={cn(
-            "bg-foreground/5 p-2 border border-border flex-1 h-full relative my-16 rounded-xl flex lg:rounded-2xl justify-center flex-col items-center border-dashed",
-            isDragOver && "border-blue-900/25 bg-blue-900/10",
+            "bg-foreground/5 p-2 border border-foreground/30 flex-1 h-full relative my-16 rounded-xl flex lg:rounded-2xl justify-center flex-col items-center border-dashed",
+            isDragOver && "border-primary/25 bg-primary/10",
             (isUploading || isPending) && "cursor-auto"
         )}>
             <div className="relative flex flex-col items-center justify-center flex-1 w-full">
@@ -84,7 +84,7 @@ const UploadPage = () => {
                                 {isUploading ? (
                                     <div className="flex flex-col items-center">
                                         <p className="">Uploading...</p>
-                                        <Progress value={uploadProgress} className="mt-2 w-40 h-1.5 bg-neutral-300" />
+                                        <Progress value={uploadProgress} className="mt-2 w-40 h-1.5 bg-slate-300" />
                                     </div>
                                 ) : isPending ? (
                                     <div className="flex flex-col items-center">

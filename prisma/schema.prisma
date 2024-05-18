@@ -24,19 +24,49 @@ enum PhoneModel {
   iphonex
   iphone11
   iphone12
+  iphone12_mini
+  iphone12_pro
+  iphone12_pro_max
   iphone13
+  iphone13_mini
+  iphone13_pro
+  iphone13_pro_max
   iphone14
+  iphone14_plus
+  iphone14_pro
+  iphone14_pro_max
   iphone15
+
+  samsung_s21
+  samsung_s21_plus
+  samsung_s21_ultra
+  samsung_s22
+  samsung_s22_plus
+  samsung_s22_ultra
+  samsung_s23
+  samsung_s23_plus
+  samsung_s23_ultra
+  samsung_s24
+  samsung_s24_plus
+  samsung_s24_ultra
 }
 
 enum CaseMaterial {
+  metal
+  leather
   sillicone
+  carbon_fiber
   polycarbonate
 }
 
 enum CaseFinish {
   smooth
   textured
+  matte
+  glossy
+  transparent
+  frosted
+  brushed
 }
 
 enum CaseColor {
@@ -44,6 +74,19 @@ enum CaseColor {
   blue
   rose
   green
+  orange
+  red
+  yellow
+  purple
+  pink
+  brown
+  gray
+  emerald
+  skin
+  lime
+  sky
+  white
+  transparent
 }
 
 model User {

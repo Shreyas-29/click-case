@@ -20,6 +20,7 @@ import { useMutation } from "@tanstack/react-query";
 import { saveConfig, SaveConfigProps } from "@/actions";
 import { useRouter } from "next/navigation";
 import DotsLoader from "./DotsLoader";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs"
 
 interface Props {
     configId: string;
@@ -45,12 +46,12 @@ const DesignConfig = ({
 
     const [options, setOptions] = useState<{
         color: (typeof COLORS)[number]
-        model: (typeof MODELS.options)[number]
+        model: (typeof MODELS.iPhone[number] | typeof MODELS.samsung[number])
         material: (typeof MATERIALS.options)[number]
         finish: (typeof FINISHES.options)[number]
     }>({
         color: COLORS[0],
-        model: MODELS.options[0],
+        model: MODELS.iPhone[0],
         material: MATERIALS.options[0],
         finish: FINISHES.options[0],
     });
@@ -165,7 +166,7 @@ const DesignConfig = ({
                     <div className="absolute z-40 inset-0 left-[3px] top-px right-[3px] bottom-px rounded-[32px] shadow-[0_0_0_99999px_rgba(229,231,235,0.6)]"></div>
                     <div className={cn(
                         "absolute inset-0 left-[3px] top-px right-[3px] bottom-px rounded-[32px]",
-                        `bg-${options.color.tw}`
+                        `bg-${options.color.color}`
                     )}></div>
                 </div>
 
@@ -211,7 +212,7 @@ const DesignConfig = ({
                 <ScrollArea className="relative flex-1 overflow-auto">
                     <div aria-hidden="true" className="absolute z-10 inset-x-0 bottom-0 h-12 bg-gradient-to-t from-background pointer-events-none"></div>
 
-                    <div className="px-8 pb-12 pt-8">
+                    <div className="px-8 pb-12 pt-8 md:pt-0">
                         <h2 className="tracking-tight font-bold text-3xl">
                             Customize your case
                         </h2>
@@ -232,7 +233,7 @@ const DesignConfig = ({
                                     <Label>
                                         Color: {options.color.label}
                                     </Label>
-                                    <div className="mt-3 flex items-center space-x-3">
+                                    <div className="mt-3 grid grid-cols-6 place-items-center gap-3">
                                         {COLORS.map((color) => (
                                             <RadioGroup.Option
                                                 key={color.label}
@@ -240,13 +241,13 @@ const DesignConfig = ({
                                                 className={({ active, checked }) => cn(
                                                     "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-transparent",
                                                     {
-                                                        [`border-${color.tw}`]: active || checked
+                                                        [`border-${color.color}`]: active || checked
                                                     }
                                                 )}
                                             >
                                                 <span className={cn(
-                                                    "w-8 h-8 rounded-full border border-foreground",
-                                                    `bg-${color.tw}`
+                                                    "w-8 h-8 rounded-full border border-foreground/10",
+                                                    `bg-${color.color}`
                                                 )}></span>
                                             </RadioGroup.Option>
                                         ))}
@@ -263,26 +264,60 @@ const DesignConfig = ({
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent className="w-full">
-                                            {MODELS.options.map((model) => (
-                                                <DropdownMenuItem
-                                                    key={model.label}
-                                                    className={cn(
-                                                        "flex text-sm gap-1 items-center p-1.5 cursor-pointer w-full hover:bg-neutral-100",
-                                                        {
-                                                            "bg-neutral-100": model.label === options.model.label
-                                                        }
-                                                    )}
-                                                    onClick={() => {
-                                                        setOptions((prev) => ({ ...prev, model }));
-                                                    }}
-                                                >
-                                                    <Check className={cn(
-                                                        "w-4 h-4 mr-2",
-                                                        model.label === options.model.label ? "opacity-100" : "opacity-0"
-                                                    )} />
-                                                    {model.label}
-                                                </DropdownMenuItem>
-                                            ))}
+                                            <Tabs defaultValue="iphone" className="w-full max-w-sm">
+                                                <TabsList className="w-full flex">
+                                                    <TabsTrigger value="iphone" className="w-full flex-[0.5]">iPhone</TabsTrigger>
+                                                    <TabsTrigger value="samsung" className="w-full flex-[0.5]">Samsung</TabsTrigger>
+                                                </TabsList>
+                                                <TabsContent value="iphone" className="grid grid-cols-2 gap-x-2 gap-y-1 w-full">
+                                                    {MODELS.iPhone.map((model) => (
+                                                        <DropdownMenuItem
+                                                            key={model.label}
+                                                            className={cn(
+                                                                "flex text-sm gap-1 items-center p-1.5 cursor-pointer w-full hover:bg-slate-100 capitalize",
+                                                                {
+                                                                    "bg-slate-100": model.label === options.model.label
+                                                                }
+                                                            )}
+                                                            onClick={() => {
+                                                                setOptions((prev) => ({ ...prev, model }));
+                                                            }}
+                                                        >
+                                                            <Check
+                                                                className={cn(
+                                                                    "w-4 h-4 mr-2",
+                                                                    model.label === options.model.label ? "opacity-100" : "opacity-0"
+                                                                )}
+                                                            />
+                                                            {model.label}
+                                                        </DropdownMenuItem>
+                                                    ))}
+                                                </TabsContent>
+                                                <TabsContent value="samsung" className="grid grid-cols-2 gap-x-2 gap-y-1 w-full">
+                                                    {MODELS.samsung.map((model) => (
+                                                        <DropdownMenuItem
+                                                            key={model.label}
+                                                            className={cn(
+                                                                "flex text-sm gap-1 items-center p-1.5 cursor-pointer w-full hover:bg-slate-100 capitalize",
+                                                                {
+                                                                    "bg-slate-100": model.label === options.model.label
+                                                                }
+                                                            )}
+                                                            onClick={() => {
+                                                                setOptions((prev) => ({ ...prev, model }));
+                                                            }}
+                                                        >
+                                                            <Check
+                                                                className={cn(
+                                                                    "w-4 h-4 mr-2",
+                                                                    model.label === options.model.label ? "opacity-100" : "opacity-0"
+                                                                )}
+                                                            />
+                                                            {model.label}
+                                                        </DropdownMenuItem>
+                                                    ))}
+                                                </TabsContent>
+                                            </Tabs>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                 </div>

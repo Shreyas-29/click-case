@@ -4,15 +4,27 @@ import { getPaymentStatus } from "@/actions";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import React from 'react'
+import React, { useState } from 'react'
 import PhonePreview from "./PhonePreview";
 import { formatPrice } from "@/lib/utils";
+import { ExtendedOrder } from "@/types/order";
+import generateInvoicePDF from "@/lib/generate-invoice-pdf";
+import { saveAs } from "file-saver";
+import { toast } from "sonner";
+import { Button } from "./ui/Button";
+import { Download } from "lucide-react";
 
-const ThankYou = () => {
+interface Props {
+    order: ExtendedOrder | null;
+}
+
+const ThankYou = ({ order }: Props) => {
 
     const searchParams = useSearchParams();
 
     const orderId = searchParams.get("orderId") || "";
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const { data } = useQuery({
         queryKey: ["get-payment-status"],
@@ -61,6 +73,23 @@ const ThankYou = () => {
 
     const shipping_amount = 0;
 
+    const handleDownloadInvoice = async () => {
+        setIsLoading(true);
+
+        try {
+            const pdfBlob = await generateInvoicePDF(order!);
+
+            saveAs(pdfBlob, `invoice_${orderId}.pdf`);
+
+            toast.success("Invoice PDF generated successfully.");
+        } catch (error) {
+            console.log("Error generating invoice PDF", error);
+            toast.error("An error occurred while generating the invoice. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="bg-background">
             <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -91,7 +120,7 @@ const ThankYou = () => {
                             You made a great choice!
                         </h4>
                         <p className="mt-2 text-sm text-muted-foreground">
-                            Thank you for your order! We're thrilled that you've joined the SnakeCase family. Your new phone case is on its way and we can't wait for you to enjoy it. Don't forget, we stand behind our products with a 5-year print guarantee. If you're not completely satisfied, we'll replace it for free.
+                            Thank you for your order! We're thrilled that you've joined the ClickCase family. Your new phone case is on its way and we can't wait for you to enjoy it. Don't forget, we stand behind our products with a 5-year print guarantee. If you're not completely satisfied, we'll replace it for free.
                         </p>
                     </div>
                 </div>
@@ -186,8 +215,18 @@ const ThankYou = () => {
                         </p>
                     </div>
                 </div>
+
+                <div className="flex items-center justify-end w-full pt-10">
+                    <Button
+                        variant="secondary"
+                        disabled={isLoading}
+                        onClick={handleDownloadInvoice}
+                    >
+                        <Download className="w-4 h-4 mr-2" />
+                        Download Invoice
+                    </Button>
+                </div>
             </div>
-            {/* TODO: Add a button to download this invoice */}
         </div>
     )
 };

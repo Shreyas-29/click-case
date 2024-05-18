@@ -19,6 +19,22 @@ const config = {
     },
     extend: {
       colors: {
+        // phone case colors
+        blue2: "#60a5fa",
+        rose2: "#fda4af",
+        green2: "#16a34a",
+        orange2: "#fed7aa",
+        red2: "#ef4444",
+        yellow2: "#facc15",
+        purple2: "#d8b4fe",
+        pink2: "#f472b6",
+        brown2: "#a1464a",
+        gray2: "#0a0a0a",
+        emerald2: "#34d399",
+        skin2: "#f0ddd7",
+        lime2: "#bef264",
+        sky2: "#38bdf8",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

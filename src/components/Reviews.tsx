@@ -20,7 +20,7 @@ const Reviews: React.FC<Props> = () => {
     return (
         <Wrapper className="relative max-w-5xl">
             <Image
-                src="/what-people-are-buying.png"
+                src="/what-people-are-buying.svg"
                 alt="people"
                 aria-hidden={true}
                 width={1024}
@@ -67,8 +67,8 @@ const ReviewGrid = () => {
                 />
             </>
         ) : null}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-neutral-100"></div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-neutral-100"></div>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-slate-100"></div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-100"></div>
     </div>
 };
 
@@ -127,7 +127,7 @@ const ReviewCard = ({ img, className, ...props }: ReviewCardProps) => {
             {...props}
             style={{ animationDelay }}
             className={cn(
-                "animate-fade-in rounded-3xl bg-background p-6 shadow-xl shadow-neutral-900/5",
+                "animate-fade-in rounded-3xl bg-background p-6 shadow-xl shadow-slate-900/5",
                 className
             )}
         >

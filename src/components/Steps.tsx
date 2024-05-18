@@ -4,13 +4,11 @@ import { STEPS } from "@/constants";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import React from 'react'
+import React from 'react';
+import { Icons } from "./Icons";
 
-interface Props {
 
-}
-
-const Steps: React.FC<Props> = () => {
+const Steps = () => {
 
     const pathname = usePathname();
 
@@ -20,7 +18,7 @@ const Steps: React.FC<Props> = () => {
 
                 const isCurrent = pathname.endsWith(step.url);
                 const isCompleted = STEPS.slice(index + 1).some((step) => pathname.endsWith(step.url));
-                const img = `/snake-${index + 1}.png`;
+                const Icon = Icons[`man${index + 1}`];
 
                 return (
                     <li key={step.name} className="relative overflow-hidden lg:flex-1">
@@ -38,11 +36,7 @@ const Steps: React.FC<Props> = () => {
                                 index !== 0 ? "lg:pl-9" : "",
                             )}>
                                 <span className="flex-shrink-0">
-                                    <Image
-                                        src={img}
-                                        alt="some"
-                                        width={1024}
-                                        height={1024}
+                                    <Icon
                                         className={cn(
                                             "flex w-20 h-20 object-contain items-center justify-center",
                                             {
@@ -72,7 +66,7 @@ const Steps: React.FC<Props> = () => {
                             {index !== 0 ? (
                                 <div className="absolute inset-0 hidden w-3 lg:block">
                                     <svg
-                                        className='h-full w-full text-neutral-300'
+                                        className='h-full w-full text-slate-300'
                                         viewBox='0 0 12 82'
                                         fill='none'
                                         preserveAspectRatio='none'>

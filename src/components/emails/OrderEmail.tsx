@@ -3,7 +3,7 @@ import { Body, Column, Container, Head, Heading, Hr, Html, Img, Preview, Row, Se
 
 const OrderEmail = ({ shippingAddress, orderId, orderDate }: { shippingAddress: ShippingAddress, orderId: string, orderDate: string }) => {
 
-    const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://snakecase.vercel.app";
+    const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://clickcase.vercel.app";
 
     return (
         <Html>
@@ -51,7 +51,7 @@ const OrderEmail = ({ shippingAddress, orderId, orderDate }: { shippingAddress: 
                                         {orderId}
                                     </Text>
                                 </Column>
-                                <Column>
+                                <Column style={{ marginLeft: 20 }}>
                                     <Text style={global.paragraphWithBold}>
                                         Order date
                                     </Text>
@@ -72,7 +72,7 @@ const OrderEmail = ({ shippingAddress, orderId, orderDate }: { shippingAddress: 
                             </Row>
                             <Row>
                                 <Text style={footer.text}>
-                                    &copy; SnakeCase, Inc. All rights reserved.
+                                    &copy; ClickCase, Inc. All rights reserved.
                                 </Text>
                             </Row>
                         </Section>

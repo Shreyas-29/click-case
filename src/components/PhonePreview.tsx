@@ -20,11 +20,72 @@ const PhonePreview = ({ croppedImageUrl, color }: Props) => {
         height: 0,
     });
 
-    let caseBgColor = "bg-neutral-900";
-    if (color === "black") caseBgColor = "bg-neutral-900";
-    if (color === "rose") caseBgColor = "bg-neutral-100";
-    if (color === "blue") caseBgColor = "bg-primary-500";
-    if (color === "green") caseBgColor = "bg-success-500";
+    // TODO: Refactor this to use a switch statement
+    let caseBgColor = "bg-slate-900";
+    
+    switch (color) {
+        case "black":
+            caseBgColor = "bg-slate-900";
+            break;
+        case "rose":
+            caseBgColor = "bg-rose2";
+            break;
+        case "blue":
+            caseBgColor = "bg-blue2";
+            break;
+        case "green":
+            caseBgColor = "bg-green2";
+            break;
+        // add below cases for orange, red, yellow, purple, pink, brown, gray, emerald, skin, lime, sky, white, transparent
+        case "orange":
+            caseBgColor = "bg-orange2";
+            break;
+        case "red":
+            caseBgColor = "bg-red2";
+            break;
+        case "yellow":
+            caseBgColor = "bg-yellow2";
+            break;
+        case "purple":
+            caseBgColor = "bg-purple2";
+            break;
+        case "pink":
+            caseBgColor = "bg-pink2";
+            break;
+        case "brown":   
+            caseBgColor = "bg-brown2";
+            break;
+        case "gray":
+            caseBgColor = "bg-gray2";
+            break;
+        case "emerald":
+            caseBgColor = "bg-emerald2";
+            break;
+        case "skin":
+            caseBgColor = "bg-skin2";
+            break;
+        case "lime":
+            caseBgColor = "bg-lime2";
+            break;
+        case "sky":
+            caseBgColor = "bg-sky2";
+            break;
+        case "white":
+            caseBgColor = "bg-white";
+            break;
+        case "transparent":
+            caseBgColor = "bg-transparent";
+            break;
+        default:
+            caseBgColor = "bg-slate-900";
+            break;   
+    };
+    
+    // if (color === "black") caseBgColor = "bg-slate-900";
+    // if (color === "rose") caseBgColor = "bg-slate-100";
+    // if (color === "blue") caseBgColor = "bg-primary-500";
+    // if (color === "green") caseBgColor = "bg-success-500";
+
 
     const handleResize = () => {
         if (!ref.current) return;
@@ -64,8 +125,8 @@ const PhonePreview = ({ croppedImageUrl, color }: Props) => {
 
             <div className="relative h-full w-full z-40">
                 <img
-                    alt="phone"
                     src="/clearphone.png"
+                    alt="phone"
                     className="pointer-events-none h-full w-full antialiased rounded-md"
                 />
             </div>

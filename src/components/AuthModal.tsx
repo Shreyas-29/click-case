@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import Image from "next/image";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs";
 import { buttonVariants } from "./ui/Button";
+import { Icons } from "./Icons";
 
 interface Props {
     isOpen: boolean;
@@ -17,13 +18,7 @@ const AuthModal = ({ isOpen, setIsOpen }: Props) => {
             <DialogContent className="z-[999999] max-w-sm">
                 <DialogHeader className="sm:text-center">
                     <div className="relative mx-auto w-24 h-24 mb-2">
-                        <Image
-                            src="/snake-1.png"
-                            alt="snake image"
-                            className="object-contain w-full h-full"
-                            width={633}
-                            height={824}
-                        />
+                        <Icons.man4 className="w-full h-full" />
                     </div>
                     <DialogTitle className="font-bold">
                         Login to continue

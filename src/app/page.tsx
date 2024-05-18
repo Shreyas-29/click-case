@@ -7,14 +7,14 @@ import React from 'react'
 
 const HomePage = () => {
     return (
-        <div className="bg-neutral-50">
+        <div className="bg-slate-50">
             <section className="">
                 <Wrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
                     <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
                         <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
                             <div className="absolute w-28 left-0 -top-20 hidden lg:block">
                                 <Image
-                                    src="/snake-1.png"
+                                    src="/cartoons/phone-cover-change.svg"
                                     alt="snake"
                                     width={1024}
                                     height={1024}
@@ -22,25 +22,34 @@ const HomePage = () => {
                                 />
                             </div>
                             <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold text-5xl !leading-tight md:text-6xl lg:text-7xl">
-                                Your Image on a <span className="bg-primary text-background rounded-md px-2">Custom</span> Phone Case
+                                Create Your <span className="bg-primary text-background rounded-md px-2">Perfect</span> Phone Case Design
                             </h1>
                             <p className="text-lg mt-8 lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap">
-                                Capture your favorite memories with your own, <span className="font-semibold">one-of-one</span> phone case.
+                                Elevate your design with a, <span className="font-semibold">one-of-a-kind</span> phone case that reflects your personality.
+                                {/* TODO: Add a trade mark to show that the user we make phone cases with unused tree trunks to reduce carbon emission ⚡ */}
                             </p>
 
                             <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
                                 <div className="space-y-2">
                                     <li className="flex gap-1.5 items-center text-left">
                                         <Check className="text-primary w-5 h-5 shrink-0" />
-                                        High-quality, durable material
+                                        High-quality, eco-friendly materials
                                     </li>
                                     <li className="flex gap-1.5 items-center text-left">
                                         <Check className="text-primary w-5 h-5 shrink-0" />
-                                        5 year print guarantee
+                                        Crystal clear, vibrant prints with lifetime guarantee
                                     </li>
                                     <li className="flex gap-1.5 items-center text-left">
                                         <Check className="text-primary w-5 h-5 shrink-0" />
-                                        Modern iPhone models supported
+                                        Wide selection of designs to match any style
+                                    </li>
+                                    <li className="flex gap-1.5 items-center text-left">
+                                        <Check className="text-primary w-5 h-5 shrink-0" />
+                                        Easy-to-use design platform
+                                    </li>
+                                    <li className="flex gap-1.5 items-center text-left">
+                                        <Check className="text-primary w-5 h-5 shrink-0" />
+                                        Fast and affordable shipping
                                     </li>
                                 </div>
                             </ul>
@@ -48,35 +57,35 @@ const HomePage = () => {
                             <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
                                 <div className="flex -space-x-4">
                                     <Image
-                                        src="/users/user-1.png"
+                                        src="/users/1.jpg"
                                         alt="user"
                                         width={1024}
                                         height={1024}
                                         className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
                                     />
                                     <Image
-                                        src="/users/user-2.png"
+                                        src="/users/2.jpg"
                                         alt="user"
                                         width={1024}
                                         height={1024}
                                         className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
                                     />
                                     <Image
-                                        src="/users/user-3.png"
+                                        src="/users/3.jpg"
                                         alt="user"
                                         width={1024}
                                         height={1024}
                                         className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
                                     />
                                     <Image
-                                        src="/users/user-4.jpg"
+                                        src="/users/4.jpg"
                                         alt="user"
                                         width={1024}
                                         height={1024}
                                         className="w-10 h-10 inline-block rounded-full ring-2 ring-muted object-cover"
                                     />
                                     <Image
-                                        src="/users/user-5.jpg"
+                                        src="/users/5.jpg"
                                         alt="user"
                                         width={1024}
                                         height={1024}
@@ -93,7 +102,7 @@ const HomePage = () => {
                                         <Star className="w-4 h-4 text-primary fill-primary" />
                                     </div>
 
-                                    <p className="text-sm"><span className="font-semibold">1.268</span> happy customers</p>
+                                    <p className="text-sm"><span className="font-semibold">2.364</span> happy customers</p>
                                 </div>
                             </div>
                         </div>
@@ -102,11 +111,11 @@ const HomePage = () => {
                     <div className="col-span-full lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20 h-fit">
                         <div className="relative md:max-w-xl">
                             <Image
-                                src="/your-image.png"
+                                src="/your-image.svg"
                                 alt="user"
                                 width={1024}
                                 height={1024}
-                                className="w-40 lg:w-52 left-56 -top-20 absolute select-none hidden sm:block lg:hidden xl:block"
+                                className="w-40 left-64 -top-20 absolute select-none hidden sm:block lg:hidden xl:block"
                             />
                             <Image
                                 src="/line.png"
@@ -121,7 +130,7 @@ const HomePage = () => {
                 </Wrapper>
             </section>
 
-            <section className="bg-neutral-100 py-24">
+            <section className="bg-slate-100 py-24">
                 <Wrapper className="flex flex-col items-center gap-16 sm:gap-32">
                     <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6">
                         <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl sm:text-6xl">
@@ -132,7 +141,7 @@ const HomePage = () => {
                             say
                         </h2>
                         <Image
-                            src="/snake-2.png"
+                            src="/cartoons/man-6.svg"
                             alt="snake"
                             width={1024}
                             height={1024}
@@ -150,13 +159,13 @@ const HomePage = () => {
                                 <Star className="w-4 h-4 text-primary fill-primary" />
                             </div>
                             <div className="text-lg leading-8">
-                                <p className="">
-                                    "The case feels durable and I love the design. The print quality is amazing and the case fits my phone perfectly. I would definitely recommend this to anyone looking for a custom phone case."
+                                <p>
+                                    "Absolutely love my custom phone case! The design is perfect and the print quality is top-notch. The case fits my phone perfectly and feels incredibly durable. Highly recommend!"
                                 </p>
                             </div>
                             <div className="flex gap-4 mt-2">
                                 <Image
-                                    src="/users/user-1.png"
+                                    src="/users/1.jpg"
                                     alt="user"
                                     width={1024}
                                     height={1024}
@@ -180,20 +189,20 @@ const HomePage = () => {
                                 <Star className="w-4 h-4 text-primary fill-primary" />
                             </div>
                             <div className="text-lg leading-8">
-                                <p className="">
-                                    "I love the case! The print quality is amazing and the case feels very durable. The case fits my phone perfectly and I love the design. I would definitely recommend this custom phone case."
+                                <p>
+                                    "Couldn't be happier with my custom phone case! The design exceeded my expectations, and the print quality is fantastic. The case feels sturdy and fits my phone perfectly. Highly recommend!"
                                 </p>
                             </div>
                             <div className="flex gap-4 mt-2">
                                 <Image
-                                    src="/users/user-2.png"
+                                    src="/users/2.jpg"
                                     alt="user"
                                     width={1024}
                                     height={1024}
                                     className="w-12 h-12 rounded-full object-cover"
                                 />
                                 <div className="flex flex-col">
-                                    <p className="font-semibold">Varun</p>
+                                    <p className="font-semibold">Radha</p>
                                     <div className="flex gap-1.5 items-center text-muted-foreground">
                                         <BadgeCheck className="w-4 h-4 text-primary" />
                                         <p className="text-sm">Verified Purchase</p>
@@ -226,27 +235,21 @@ const HomePage = () => {
                     <div className="mx-auto max-w-6xl px-6 lg:px-8">
                         <div className="relative flex flex-col items-center md:grid grid-cols-2 gap-40">
                             <div className="absolute top-[25rem] md:top-1/2 -translate-y-1/2 z-10 left-1/2 -translate-x-1/2 rotate-90 md:rotate-0 lg:pl-12">
-                                <Image
-                                    src="/arrow.png"
-                                    alt="arrow"
-                                    width={1024}
-                                    height={1024}
-                                    className="w-32 h-auto"
-                                />
+                                <Icons.arrow className="w-28 h-auto" />
                             </div>
 
                             <div className="relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-muted/5 lg:rounded-2xl">
                                 <Image
-                                    src="/horse.jpg"
-                                    alt="horse"
-                                    width={1024}
-                                    height={1024}
+                                    src="/girl.jpg"
+                                    alt="girl"
+                                    width={2048}
+                                    height={2048}
                                     className="rounded-md object-cover bg-background shadow-2xl ring-1 ring-muted/10 h-full w-full"
                                 />
                             </div>
 
                             <div className="col-span-1 w-full mx-auto max-w-xs">
-                                <Phone img="/horse_phone.jpg" className="w-60" />
+                                <Phone img="/new-girl.jpg" className="w-60" />
                             </div>
                         </div>
                     </div>
@@ -254,19 +257,19 @@ const HomePage = () => {
                     <ul className="mx-auto mt-12 max-w-fit sm:text-lg space-y-2 flex flex-col items-start justify-center">
                         <li className="w-fit flex items-center">
                             <CircleCheck className="w-5 h-5 text-primary inline mr-1.5" />
-                            High-quality silicone material
+                            High-quality, eco-friendly materials
                         </li>
                         <li className="w-fit flex items-center">
                             <CircleCheck className="w-5 h-5 text-primary inline mr-1.5" />
-                            Scratch and fingerprint resistant coating
+                            Crystal clear, vibrant prints with lifetime guarantee
                         </li>
                         <li className="w-fit flex items-center">
                             <CircleCheck className="w-5 h-5 text-primary inline mr-1.5" />
-                            Wireless charging compatible
+                            Wide selection of designs to match any style
                         </li>
                         <li className="w-fit flex items-center">
                             <CircleCheck className="w-5 h-5 text-primary inline mr-1.5" />
-                            5 year print warranty
+                            Easy-to-use design platform
                         </li>
                     </ul>
                     <div className="flex justify-center pt-8">
