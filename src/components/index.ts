@@ -13,9 +13,11 @@ import PhonePreview from "./PhonePreview";
 import StatusDropdown from "./StatusDropdown";
 import DotsLoader from "./DotsLoader";
 import Loader from "./Loader";
-import Orders from "./Orders";
 
 import OrderEmail from "./emails/OrderEmail";
+
+import Orders from "./orders/Orders";
+import { type OrderColumn, columns } from "./orders/OrderColumn";
 
 import Wrapper from "./utils/Wrapper";
 import Providers from "./utils/Providers";
@@ -45,4 +47,6 @@ export {
     UserAccount,
     UserAvatar,
     Orders,
+    OrderColumn,
+    columns
 }

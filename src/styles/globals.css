@@ -80,12 +80,12 @@
 
 ::-webkit-scrollbar {
   background-color: #e2e8f0;
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: hsl(var(--primary));
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 * {
