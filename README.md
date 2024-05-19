@@ -1,4 +1,4 @@
-<img src="https://snakecase.vercel.app/logo.png" alt="Click-Case Logo" width="60px"> 
+<img src="https://clickcase.vercel.app/logo.png" alt="Logo" width="60px"> 
  
 # Click-Case
  
