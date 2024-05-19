@@ -1,5 +1,7 @@
-# ![Click-Case Logo](https://snakecase.vercel.app/logo.png) Click-Case
-
+<img src="https://snakecase.vercel.app/logo.png" alt="Click-Case Logo" width="60px"> 
+ 
+# Click-Case
+ 
 Click-Case is a cutting-edge e-commerce platform for custom phone cases. This project allows users to select, customize, and order phone cases online, providing a seamless and personalized shopping experience.
 
 ## Features
