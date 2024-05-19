@@ -64,7 +64,7 @@ Follow these instructions to get the project up and running on your local machin
     KINDE_SITE_URL=http://localhost:3000
     KINDE_POST_LOGOUT_REDIRECT_URL=http://localhost:3000
     KINDE_POST_LOGIN_REDIRECT_URL=http://localhost:3000/auth-callback
-    DATABASE_URL=mongodb+srv://username:password@cluster0.ugaqour.mongodb.net/database
+    DATABASE_URL=
     NEXT_PUBLIC_SERVER_URL=http://localhost:3000
     ADMIN_EMAIL=youremail@mail.com
     UPLOADTHING_SECRET=
