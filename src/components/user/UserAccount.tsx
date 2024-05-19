@@ -55,7 +55,7 @@ const UserAccount = ({ user }: Props) => {
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem className="px-4 py-2 text-destructive hover:text-destructive hover:bg-destructive/5">
-                    <Link href="/api/auth/logout">
+                    <Link href="/api/auth/logout" className="w-full">
                         Sign out
                     </Link>
                 </DropdownMenuItem>
