@@ -22,7 +22,7 @@ const HomePage = () => {
                                 />
                             </div>
                             <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold text-5xl !leading-tight md:text-6xl lg:text-7xl">
-                                Create Your <span className="bg-primary text-background rounded-md px-2">Perfect</span> Phone Case Design
+                                Create a <span className="bg-primary text-background rounded-md px-2">Perfect</span> Phone Case Design
                             </h1>
                             <p className="text-lg mt-8 lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap">
                                 Elevate your design with a, <span className="font-semibold">one-of-a-kind</span> phone case that reflects your personality.

@@ -27,8 +27,6 @@ const DesignPreview = ({ configuration }: Props) => {
 
     const { user } = useKindeBrowserClient();
 
-    console.log("user", user);
-
     const { id, color, model, finish, material } = configuration;
 
     const [showConfetti, setShowConfetti] = useState<boolean>(false);

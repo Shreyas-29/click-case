@@ -172,6 +172,7 @@ const DesignConfig = ({
 
                 <Rnd
                     lockAspectRatio
+                    disableDragging={isPending}
                     default={{
                         x: 150,
                         y: 205,
@@ -195,7 +196,7 @@ const DesignConfig = ({
                         const { x, y } = data;
                         setRenderedPosition({ x, y });
                     }}
-                    className="absolute z-20 border-[3px] border-primary"
+                    className="absolute z-20 border-[3px] border-primary disabled:opacity-50"
                 >
                     <div className="relative w-full h-full cursor-grab">
                         <NextImage
@@ -223,6 +224,7 @@ const DesignConfig = ({
                             <div className="flex flex-col gap-6">
                                 <RadioGroup
                                     value={options.color}
+                                    disabled={isPending}
                                     onChange={(val) => {
                                         setOptions((prev) => ({
                                             ...prev,
@@ -238,6 +240,7 @@ const DesignConfig = ({
                                             <RadioGroup.Option
                                                 key={color.label}
                                                 value={color}
+                                                disabled={isPending}
                                                 className={({ active, checked }) => cn(
                                                     "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-transparent",
                                                     {
@@ -257,7 +260,7 @@ const DesignConfig = ({
                                 <div className="relative flex flex-col gap-3 w-full">
                                     <Label>Model</Label>
                                     <DropdownMenu>
-                                        <DropdownMenuTrigger asChild>
+                                        <DropdownMenuTrigger asChild disabled={isPending}>
                                             <Button variant="outline" role="combobox" className="w-full justify-between">
                                                 {options.model.label}
                                                 <ChevronDown className="ml-2 w-4 h-4 shrink-0 opacity-50" />
@@ -266,8 +269,20 @@ const DesignConfig = ({
                                         <DropdownMenuContent className="w-full">
                                             <Tabs defaultValue="iphone" className="w-full max-w-sm">
                                                 <TabsList className="w-full flex">
-                                                    <TabsTrigger value="iphone" className="w-full flex-[0.5]">iPhone</TabsTrigger>
-                                                    <TabsTrigger value="samsung" className="w-full flex-[0.5]">Samsung</TabsTrigger>
+                                                    <TabsTrigger
+                                                        value="iphone"
+                                                        disabled={isPending}
+                                                        className="w-full flex-[0.5]"
+                                                    >
+                                                        iPhone
+                                                    </TabsTrigger>
+                                                    <TabsTrigger
+                                                        value="samsung"
+                                                        disabled={isPending}
+                                                        className="w-full flex-[0.5]"
+                                                    >
+                                                        Samsung
+                                                    </TabsTrigger>
                                                 </TabsList>
                                                 <TabsContent value="iphone" className="grid grid-cols-2 gap-x-2 gap-y-1 w-full">
                                                     {MODELS.iPhone.map((model) => (
@@ -342,8 +357,9 @@ const DesignConfig = ({
                                                 <RadioGroup.Option
                                                     key={option.value}
                                                     value={option}
+                                                    disabled={isPending}
                                                     className={({ active, checked }) => cn(
-                                                        "relative block cursor-pointer rounded-lg bg-background px-6 py-4 shadow-sm border-2 border-border focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between",
+                                                        "relative block cursor-pointer rounded-lg bg-background px-6 py-4 shadow-sm border-2 border-border focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between disabled:opacity-50",
                                                         {
                                                             "border-primary": active || checked
                                                         }

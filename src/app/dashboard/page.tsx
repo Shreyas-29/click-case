@@ -20,7 +20,7 @@ const DashboardPage = async () => {
 
     const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 
-    if (!user || user.email !== ADMIN_EMAIL) {
+    if (!user || (user?.email !== ADMIN_EMAIL)) {
         return notFound();
     };
 

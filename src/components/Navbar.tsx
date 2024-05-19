@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Button, buttonVariants } from "./ui/Button";
 import { ArrowRight } from "lucide-react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import UserAccount from "./user/UserAccount";
 
 interface Props {
 
@@ -18,19 +19,19 @@ const Navbar: React.FC<Props> = async () => {
     const isAdmin = user?.email === process.env.ADMIN_EMAIL;
 
     return (
-        <header className="sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-border bg-white backdrop-blur-none transition-all">
+        <header className="sticky z-[80] h-14 inset-x-0 top-0 w-full border-b border-border bg-white/50 backdrop-blur-lg transition-all">
             <Wrapper>
                 <div className="flex h-14 items-center justify-between border-b border-border">
                     <Link href="/" className="flex z-40 font-semibold">
-                        snake <span className="text-primary">case</span>
+                        click <span className="text-primary">case</span>
                     </Link>
 
                     <div className="flex items-center space-x-4 h-full">
                         {user ? (
                             <>
-                                <Link href="/api/auth/logout" className={buttonVariants({ size: "sm", variant: "ghost" })}>
+                                {/* <Link href="/api/auth/logout" className={buttonVariants({ size: "sm", variant: "ghost" })}>
                                     Sign out
-                                </Link>
+                                </Link> */}
                                 {isAdmin && (
                                     <Link href="/dashboard" className={buttonVariants({ size: "sm", variant: "ghost" })}>
                                         Dashboard ⚡
@@ -40,6 +41,7 @@ const Navbar: React.FC<Props> = async () => {
                                     Create case
                                     <ArrowRight className="w-5 h-5 ml-1.5" />
                                 </Link>
+                                <UserAccount user={user} />
                             </>
                         ) : (
                             <>

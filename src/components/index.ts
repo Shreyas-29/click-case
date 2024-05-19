@@ -13,11 +13,15 @@ import PhonePreview from "./PhonePreview";
 import StatusDropdown from "./StatusDropdown";
 import DotsLoader from "./DotsLoader";
 import Loader from "./Loader";
+import Orders from "./Orders";
 
 import OrderEmail from "./emails/OrderEmail";
 
 import Wrapper from "./utils/Wrapper";
 import Providers from "./utils/Providers";
+
+import UserAccount from "./user/UserAccount";
+import UserAvatar from "./user/UserAvatar";
 
 export {
     Icons,
@@ -38,4 +42,7 @@ export {
     OrderEmail,
     DotsLoader,
     Loader,
+    UserAccount,
+    UserAvatar,
+    Orders,
 }
